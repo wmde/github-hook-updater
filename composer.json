@@ -1,0 +1,5 @@
+{
+	"require": {
+		"addshore/github-hook-controller": "0.1.*"
+	}
+}
