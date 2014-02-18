@@ -23,6 +23,7 @@ $hookTargets = array(
 		'puppet-wikidata-test',
 		'puppet-builder',
 		'puppet-composer',
+		'github-hook-updater',
 	),
 	'DataValues' => array(
 		'Geo',
