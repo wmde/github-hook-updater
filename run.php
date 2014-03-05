@@ -26,6 +26,9 @@ $hookTargets = array(
 		'puppet-composer',
 		'github-hook-updater',
 	),
+	'Wikidata' => array(
+		'easyrdf_lite',
+	),
 	'DataValues' => array(
 		'Geo',
 		'Number',
@@ -60,7 +63,7 @@ foreach( $hookTargets as $user => $repos ) {
 				'server' => 'chat.freenode.org',
 				'port' => '7000',
 				'room' => '#wikidata',
-				'nick' => 'github-' . $user,
+				'nick' => 'github-' . strtolower( $user ),
 				'ssl' => '1',
 			),
 			'events' => array(
