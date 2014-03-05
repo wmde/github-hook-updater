@@ -20,6 +20,7 @@ $hookTargets = array(
 		'WikibaseQuery',
 		'Diff',
 		'scrumbugz',
+		'github-hook-updater',
 		'puppet-wikidata-test',
 		'puppet-builder',
 		'puppet-composer',
@@ -38,24 +39,6 @@ $hookTargets = array(
 	),
 );
 
-/**
- * Params for the irc hook
- */
-$hook = array(
-	'name' => 'irc',
-	'active' => true,
-	'config' => array(
-		'server' => 'chat.freenode.org',
-		'port' => '7000',
-		'room' => '#wikidata',
-		'nick' => 'github-wmde',
-		'ssl' => '1',
-	),
-	'events' => array(
-		'push', 'pull_request', 'commit_comment', 'pull_request_review_comment'
-	),
-);
-
 require_once __DIR__ . '/vendor/autoload.php';
 
 echo "Please generate a personal access token at https://github.com/settings/applications\n";
@@ -69,6 +52,22 @@ $controller = new \GithubHookController\IrcHookController( $client );
 
 foreach( $hookTargets as $user => $repos ) {
 	foreach( $repos as $repo ) {
+
+		$hook = array(
+			'name' => 'irc',
+			'active' => true,
+			'config' => array(
+				'server' => 'chat.freenode.org',
+				'port' => '7000',
+				'room' => '#wikidata',
+				'nick' => 'github-' . $user,
+				'ssl' => '1',
+			),
+			'events' => array(
+				'push', 'pull_request', 'commit_comment', 'pull_request_review_comment'
+			),
+		);
+
 		$controller->setIrcHook( $hook, $user, $repo );
 	}
 }
