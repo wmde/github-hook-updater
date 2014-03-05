@@ -63,7 +63,7 @@ foreach( $hookTargets as $user => $repos ) {
 				'server' => 'chat.freenode.org',
 				'port' => '7000',
 				'room' => '#wikidata',
-				'nick' => 'github-' . strtolower( $user ),
+				'nick' => 'gh-' . strtolower( $user ),
 				'ssl' => '1',
 			),
 			'events' => array(
