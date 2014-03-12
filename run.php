@@ -25,6 +25,7 @@ $hookTargets = array(
 		'puppet-builder',
 		'puppet-composer',
 		'github-hook-updater',
+		'jenkins-job-builder-config',
 	),
 	'Wikidata' => array(
 		'easyrdf_lite',
