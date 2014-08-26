@@ -77,7 +77,12 @@ foreach( $hookTargets as $user => $repos ) {
 				'push', 'pull_request', 'commit_comment', 'pull_request_review_comment'
 			),
 		);
-
-		$controller->setIrcHook( $hook, $user, $repo );
+		try{
+			$controller->setIrcHook( $hook, $user, $repo );
+			echo( "Done " .$user . '/' . $repo . "\n" );
+		}
+		catch( Github\Exception\RuntimeException $e ){
+			echo( $user . '/' . $repo . ': ' . $e->getCode() . ' ' . $e->getMessage() . "\n" );
+		}
 	}
 }
