@@ -69,6 +69,8 @@ $hookTargets = array(
 require_once __DIR__ . '/vendor/autoload.php';
 
 echo "Please generate a personal access token at https://github.com/settings/applications\n";
+echo "The token can be deleted after using run.php\n";
+echo "It is probably best to give the token ALL permissions\n";
 echo "Github Token:";
 $token = stream_get_line(STDIN, 1024, "\n");
 
@@ -77,7 +79,9 @@ $client->authenticate( $token, null, \Github\Client::AUTH_HTTP_TOKEN );
 
 $controller = new \GithubHookController\IrcHookController( $client );
 
+echo "Adding and Updating hooks!\n";
 foreach( $hookTargets as $channel => $userRepos ) {
+	echo "\n$channel\n";
 	foreach ( $userRepos as $user => $repos ) {
 		foreach ( $repos as $repo ) {
 
@@ -100,7 +104,11 @@ foreach( $hookTargets as $channel => $userRepos ) {
 				echo( "Done " . $user . '/' . $repo . "\n" );
 			}
 			catch( Github\Exception\RuntimeException $e ) {
-				echo( $user . '/' . $repo . ': ' . $e->getCode() . ' ' . $e->getMessage() . "\n" );
+				echo "Error " . $user . '/' . $repo . ': ' . $e->getCode() . ' ' . $e->getMessage();
+				if( $e->getCode() == "404" ) {
+					echo " (this could be due to lack of permissions on the repo)";
+				}
+				echo "\n";
 			}
 		}
 	}
