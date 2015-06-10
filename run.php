@@ -51,6 +51,17 @@ $hookTargets = array(
 		'wmde' => array(
 			'github-hook-updater',
 			'scrumbugz',
+			'phragile',
+			'Lizenzverweisgenerator',
+			'DeepCat-Gadget',
+			'catgraph-jsonp',
+			'catgraph-service',
+			'catgraph-web',
+			'graphserv',
+			'graphcore',
+			'graphcare',
+			'graphserv-client-python',
+			'graphserv-client-php',
 		),
 	),
 );
