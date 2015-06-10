@@ -50,7 +50,6 @@ $hookTargets = array(
 	'#wikimedia-de-tech' => array(
 		'wmde' => array(
 			'github-hook-updater',
-			'scrumbugz',
 			'phragile',
 			'Lizenzverweisgenerator',
 			'DeepCat-Gadget',
@@ -60,8 +59,8 @@ $hookTargets = array(
 			'graphserv',
 			'graphcore',
 			'graphcare',
-			'graphserv-client-python',
-			'graphserv-client-php',
+			'catgraph-client-python',
+			'catgraph-client-php',
 		),
 	),
 );
