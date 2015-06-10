@@ -4,48 +4,50 @@
  * Repositories to add / alter the irc hook for
  */
 $hookTargets = array(
-	'wmde' => array(
-		'Ask',
-		'AskSerialization',
-		'DataTypes',
-		'DataValuesJavascript',
-		'Diff',
-		'github-hook-updater',
-		'puppet-wikidata-test',
-		'puppet-builder',
-		'puppet-composer',
-		'scrumbugz',
-		'Serialization',
-		'ValueView',
-		'WikibaseApiJavaScript',
-		'WikibaseDatabase',
-		'WikibaseDataModel',
-		'WikibaseDataModelSerialization',
-		'WikibaseDataModelJavascript',
-		'WikibaseInternalSerialization',
-		'WikibaseSerializationJavaScript',
-		'WikibaseQuery',
-		'Wikiba.se',
-		'WikidataBuilder',
-		'WikidataBuildResources',
-		'WikidataBrowserTests',
-		'wikidata-analysis',
-		'Wikidata.org',
-		'WikimediaBadges',
-	),
-	'Wikidata' => array(
-		'easyrdf_lite',
-	),
-	'DataValues' => array(
-		'Geo',
-		'Number',
-		'Common',
-		'Interfaces',
-		'DataValues',
-		'Serialization',
-		'Validators',
-		'Time',
-		'Iri',
+	'#wikidata' => array(
+		'wmde' => array(
+			'Ask',
+			'AskSerialization',
+			'DataTypes',
+			'DataValuesJavascript',
+			'Diff',
+			'github-hook-updater',
+			'puppet-wikidata-test',
+			'puppet-builder',
+			'puppet-composer',
+			'scrumbugz',
+			'Serialization',
+			'ValueView',
+			'WikibaseApiJavaScript',
+			'WikibaseDatabase',
+			'WikibaseDataModel',
+			'WikibaseDataModelSerialization',
+			'WikibaseDataModelJavascript',
+			'WikibaseInternalSerialization',
+			'WikibaseSerializationJavaScript',
+			'WikibaseQuery',
+			'Wikiba.se',
+			'WikidataBuilder',
+			'WikidataBuildResources',
+			'WikidataBrowserTests',
+			'wikidata-analysis',
+			'Wikidata.org',
+			'WikimediaBadges',
+		),
+		'Wikidata' => array(
+			'easyrdf_lite',
+		),
+		'DataValues' => array(
+			'Geo',
+			'Number',
+			'Common',
+			'Interfaces',
+			'DataValues',
+			'Serialization',
+			'Validators',
+			'Time',
+			'Iri',
+		),
 	),
 );
 
@@ -60,29 +62,31 @@ $client->authenticate( $token, null, \Github\Client::AUTH_HTTP_TOKEN );
 
 $controller = new \GithubHookController\IrcHookController( $client );
 
-foreach( $hookTargets as $user => $repos ) {
-	foreach( $repos as $repo ) {
+foreach( $hookTargets as $channel => $userRepos ) {
+	foreach ( $userRepos as $user => $repos ) {
+		foreach ( $repos as $repo ) {
 
-		$hook = array(
-			'name' => 'irc',
-			'active' => true,
-			'config' => array(
-				'server' => 'chat.freenode.org',
-				'port' => '7000',
-				'room' => '#wikidata',
-				'nick' => 'gh-' . strtolower( $user ),
-				'ssl' => '1',
-			),
-			'events' => array(
-				'push', 'pull_request', 'commit_comment', 'pull_request_review_comment'
-			),
-		);
-		try{
-			$controller->setIrcHook( $hook, $user, $repo );
-			echo( "Done " .$user . '/' . $repo . "\n" );
-		}
-		catch( Github\Exception\RuntimeException $e ){
-			echo( $user . '/' . $repo . ': ' . $e->getCode() . ' ' . $e->getMessage() . "\n" );
+			$hook = array(
+				'name' => 'irc',
+				'active' => true,
+				'config' => array(
+					'server' => 'chat.freenode.org',
+					'port' => '7000',
+					'room' => $channel,
+					'nick' => 'gh-' . strtolower( $user ),
+					'ssl' => '1',
+				),
+				'events' => array(
+					'push', 'pull_request', 'commit_comment', 'pull_request_review_comment'
+				),
+			);
+			try {
+				$controller->setIrcHook( $hook, $user, $repo );
+				echo( "Done " . $user . '/' . $repo . "\n" );
+			}
+			catch( Github\Exception\RuntimeException $e ) {
+				echo( $user . '/' . $repo . ': ' . $e->getCode() . ' ' . $e->getMessage() . "\n" );
+			}
 		}
 	}
 }
