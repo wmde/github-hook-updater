@@ -11,11 +11,9 @@ $hookTargets = array(
 			'DataTypes',
 			'DataValuesJavascript',
 			'Diff',
-			'github-hook-updater',
 			'puppet-wikidata-test',
 			'puppet-builder',
 			'puppet-composer',
-			'scrumbugz',
 			'Serialization',
 			'ValueView',
 			'WikibaseApiJavaScript',
@@ -47,6 +45,12 @@ $hookTargets = array(
 			'Validators',
 			'Time',
 			'Iri',
+		),
+	),
+	'#wikimedia-de-tech' => array(
+		'wmde' => array(
+			'github-hook-updater',
+			'scrumbugz',
 		),
 	),
 );
