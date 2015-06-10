@@ -67,7 +67,7 @@ $hookTargets = array(
 
 require_once __DIR__ . '/vendor/autoload.php';
 
-echo "Please generate a personal access token at https://github.com/settings/applications\n";
+echo "Please generate a personal access token at https://github.com/settings/tokens\n";
 echo "The token can be deleted after using run.php\n";
 echo "It is probably best to give the token ALL permissions\n";
 echo "Github Token:";

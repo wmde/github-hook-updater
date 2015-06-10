@@ -21,9 +21,9 @@ Then we just have to run run.php:
 $ php run.php
 ```
 
-We will be prompoted for an access token which can be retreived from https://github.com/settings/applications
+We will be prompted for an access token which can be retrieved from https://github.com/settings/tokens
 ```bash
-$ Please generate a personal access token at https://github.com/settings/applications
+$ Please generate a personal access token at https://github.com/settings/tokens
 $ Github Token:
 ```
 
