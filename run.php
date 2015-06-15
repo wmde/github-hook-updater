@@ -4,7 +4,7 @@
  * Repositories to add / alter the irc hook for
  */
 $hookTargets = array(
-	'#wikidata' => array(
+	'#wikidata-feed' => array(
 		'wmde' => array(
 			'Ask',
 			'AskSerialization',
