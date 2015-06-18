@@ -17,7 +17,6 @@ $hookTargets = array(
 			'puppet-composer',
 			'Serialization',
 			'ValueView',
-			'WikibaseApiJavaScript',
 			'WikibaseDatabase',
 			'WikibaseDataModel',
 			'WikibaseDataModelSerialization',
