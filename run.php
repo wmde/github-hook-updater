@@ -39,6 +39,13 @@ $hookTargets = array(
 		'Wikidata' => array(
 			'easyrdf_lite',
 		),
+		'Wikidata-lib' => array(
+			'PropertySuggester',
+			'PropertySuggester-Python',
+			'Wikidata.lib',
+			'PubSubHubbubSubscriber',
+			'ConnectionFinder',
+		),
 		'DataValues' => array(
 			'Geo',
 			'Number',
