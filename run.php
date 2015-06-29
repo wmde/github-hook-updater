@@ -19,6 +19,7 @@ $hookTargets = array(
 			'ValueView',
 			'WikibaseDatabase',
 			'WikibaseDataModel',
+			'WikibaseDataModelServices',
 			'WikibaseDataModelSerialization',
 			'WikibaseDataModelJavascript',
 			'WikibaseEntityStore',
