@@ -76,6 +76,7 @@ $hookTargets = array(
 			'catgraph-web',
 			'ContentStaging',
 			'file-reuse-test',
+			'graphite-backup',
 			'gtwl-slurp',
 			'graphserv',
 			'graphcore',
