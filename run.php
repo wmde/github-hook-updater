@@ -32,7 +32,6 @@ $hookTargets = array(
 			'Wikiba.se',
 			'WikidataApiGem',
 			'WikidataBuilder',
-			'WikidataBuildResources',
 			'WikidataBrowserTests',
 			'WikidataBrowserTestsRSpec',
 			'wikidata-analysis',
